@@ -66,3 +66,17 @@ resource "aws_instance" "sonarqube-server" {
     Name = "${var.env_prefix}-sonar"
   }
 }
+
+resource "aws_instance" "maven-server" {
+  ami                         = "ami-0e820afa569e84cc1"
+  instance_type               = var.instance_type_maven
+  key_name                    = var.key_name
+  subnet_id                   = aws_subnet.myapp-subnet.id
+  vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
+  availability_zone           = var.avail_zone_a
+  associate_public_ip_address = true
+  user_data                   = file("maven-script.sh")
+  tags = {
+    Name = "${var.env_prefix}-maven"
+  }
+}

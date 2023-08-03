@@ -6,6 +6,7 @@ variable "key_name" {}
 variable "instance_type_jenkins" {}
 variable "instance_type_docker" {}
 variable "instance_type_nexus" {}
+variable "instance_type_maven" {}
 variable "instance_type_sonarqube" {}
 
 #variable "password" {
